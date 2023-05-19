@@ -25,10 +25,4 @@ export const ClientView = ({client}) => {
 
 ClientView.propTypes = {
   client: PropTypes.object.isRequired,
-  name: PropTypes.string.isRequired,
-  lastname: PropTypes.string.isRequired,
-  country: PropTypes.string.isRequired,
-  city: PropTypes.string.isRequired,
-  number: PropTypes.number.isRequired,
-  street: PropTypes.string.isRequired,
 }

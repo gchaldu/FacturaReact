@@ -18,7 +18,7 @@ export const ProductoView = ({items}) => {
             
             return (
               // eslint-disable-next-line react/jsx-key
-              <RowItem item={item} />
+              <RowItem key={ item.id }item={item} />
             );
           })}
         </tbody>
