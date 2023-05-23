@@ -13,11 +13,17 @@ export const InvoiceApp = () => {
   const { name: nameCompany, fiscalNumber } = company;
 
   const [productValue, setProductValue] = useState('');
-  const [priceValue, setPriceValue] = useState(0);
-  const [quantityValue, setQuantityValue] = useState(0);
+  const [priceValue, setPriceValue] = useState('');
+  const [quantityValue, setQuantityValue] = useState('');
 
   const [items, setItems] = useState (itemsInicial);
 
+  const limpiarHtml = () =>
+  {
+    setProductValue('');
+    setPriceValue('');
+    setQuantityValue('');
+  }
 
   return (
     <>
@@ -44,16 +50,17 @@ export const InvoiceApp = () => {
                 <TotalView total={total}/>
                 <form className="w-50" onSubmit={event=>{
                   event.preventDefault();
-                  setItems([...items, { product: productValue, price: priceValue, quantity: quantityValue }])
+                  setItems([...items, { id: 4, product: productValue, price: parseInt(priceValue,10), quantity: quantityValue }])
+                  limpiarHtml();
                 }} >
-                  <input type="text" name="product" placeholder="Producto" className="form-control mx-2 my-2" onChange={ event =>{
+                  <input type="text" name="product" placeholder="Producto" value={productValue} className="form-control mx-2 my-2" onChange={ event =>{
                     setProductValue(event.target.value);
                   }}/>
-                  <input type="text" name="price" placeholder="Precio" className="form-control mx-2 my-2" onChange={ event =>{
-                    setPriceValue(parseInt(event.target.value))
+                  <input type="text" name="price" placeholder="Precio" value={priceValue} className="form-control mx-2 my-2" onChange={ event =>{
+                    setPriceValue(event.target.value);
                   }}/>
-                  <input type="text" name="quantity" placeholder="Cantidad" className="form-control mx-2 my-2" onChange={ event =>{
-                    setQuantityValue(parseInt(event.target.value))
+                  <input type="text" name="quantity" placeholder="Cantidad" value={quantityValue} className="form-control mx-2 my-2" onChange={ event =>{
+                    setQuantityValue(event.target.value);
                   }}/>
                   <button type="submit" className="btn btn-primary">Agregar Producto</button>
                 </form>
